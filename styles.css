@@ -1,0 +1,98 @@
+/* ===== BODY ===== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(240, 238, 232); 
+    color: rgb(60, 60, 55); 
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== HEADER ===== */
+header {
+    background-color: rgb(102, 150, 105); 
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* ===== NAVIGATION BAR ===== */
+nav {
+    background-color: rgb(121, 184, 183); 
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: rgb(245, 245, 240); 
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+/* Hover effect */
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ===== MAIN CONTENT ===== */
+main {
+    padding: 20px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: rgb(102, 150, 105); 
+    color: rgb(245, 245, 240);
+    text-align: center;
+    padding: 10px;
+}
+
+/* ===== HEADINGS ===== */
+h1, h2, h3 {
+    margin-bottom: 10px;
+}
+
+/* ===== LINKS ===== */
+a {
+    color: rgb(121, 184, 183); 
+}
+
+a:hover {
+    color: rgb(102, 150, 105); 
+}
+
+/* ===== BUTTONS ===== */
+button {
+    background-color: rgb(102, 150, 105);
+    color: rgb(245, 245, 240);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Button hover */
+button:hover {
+    background-color: rgb(121, 184, 183);
+}
+
+/* ===== CARDS ===== */
+.card {
+    background-color: rgb(255, 255, 250); 
+    border: 1px solid rgb(200, 195, 185); 
+    padding: 15px;
+    margin: 15px 0;
+}
+
+/* ===== IMAGES ===== */
+img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid rgb(102, 150, 105);
+    margin-top: 10px;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    width: 90%;
+    margin: auto;
+}
