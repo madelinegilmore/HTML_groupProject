@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
+        body {
+            background-color: rgb(245, 245, 240);
+        }
         .scroll-container {
             overflow-x: auto;
             white-space: nowrap; /* Prevents images from wrapping to the next line */
@@ -18,6 +21,7 @@
             position: relative;
             overflow: hidden;
             margin-right: 10px;
+            cursor: pointer;
         }
 
         .image-card img {
@@ -34,8 +38,11 @@
             left: 0;
             width: 100%;
             height: 100%;
+            box-sizing: border-box;
             background-color: rgba(33, 36, 36, 0.9);
             color: white;
+            white-space: normal;
+            overflow-wrap: break-word;
 
             display: flex;
             align-items: center;
@@ -44,7 +51,94 @@
 
             opacity: 0;
             transition: opacity 0.3s;
-            /* padding: 10px; */
+            padding: 10px;
+        }
+
+        .overlay h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.2rem;
+        }
+
+        .overlay p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .gallery-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .gallery-modal.open {
+            display: flex;
+        }
+
+        .gallery-modal-content {
+            background: rgb(245, 245, 240);
+            color: rgb(60, 60, 55);
+            width: min(1100px, 100%);
+            max-height: 90vh;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+        }
+
+        .gallery-modal-image {
+            width: 65%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-modal-text {
+            width: 35%;
+            padding: 1.5rem;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .gallery-modal-text h2 {
+            margin-top: 0;
+            font-size: 1.6rem;
+            text-align: left;
+        }
+
+        .gallery-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            border: none;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.25rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            .gallery-modal-content {
+                flex-direction: column;
+            }
+
+            .gallery-modal-image,
+            .gallery-modal-text {
+                width: 100%;
+            }
+
+            .gallery-modal-image {
+                max-height: 45vh;
+            }
         }
     </style>
 </head>
@@ -77,32 +171,93 @@
     <main>
         <div class="scroll-container">
 
-            <div class="image-card" data-desc="Beautiful coastal village in Italy">
-              <img src="https://media.cntraveller.com/photos/611befdcdb797d0116fd4d86/16:9/w_3200,h_1800,c_limit/end.jpg" alt="Cinque Terre">
+            <div class="image-card" data-title="Rainforest" data-desc="Rainforests are home to incredible biodiversity, but deforestation for farming and logging is rapidly destroying habitats. Many species lose their homes before they are even discovered.">
+              <img src="https://d20knvk822eu5a.cloudfront.net/s3fs-public-optimized/2024-01/baby-emperor-tamarind.jpg.webp" alt="Rainforest ecosystem and endangered wildlife">
             </div>
           
-            <div class="image-card" data-desc="Lush green forest ecosystem">
-              <img src="https://www.green.earth/hubfs/Why%20should%20endangered%20species%20be%20protected%20_featured.png" alt="Forest">
+            <div class="image-card" data-title="Oceans" data-desc="Marine life is threatened by plastic pollution, overfishing, and rising ocean temperatures. Coral reefs are especially vulnerable and are disappearing at alarming rates.">
+              <img src="https://www.calacademy.org/sites/default/files/styles/manual_crop_standard_960x540/public/uploads/images/curacao-willlove-2000.jpg?itok=yiQo5jK0&c=1f17937a1e2e65cac81e37381669b5a8" alt="Ocean ecosystem and marine life">
             </div>
+            <div class="image-card" data-title="Savannas" data-desc="In savanna ecosystems, animals face habitat loss due to agriculture and human expansion. Poaching also continues to threaten iconic species like elephants and rhinos.">
+                <img src="https://d1jyxxz9imt9yb.cloudfront.net/medialib/4695/image/s768x1300/LC202306_AmboseliWildlife_015_429160_reduced.jpg" alt="Savanna habitat with endangered animals">
+              </div>
+
+              <div class="image-card" data-title="Arctic" data-desc="The Arctic is warming faster than any other region, causing ice to melt and disrupting ecosystems. Animals like polar bears struggle to find food and stable habitats.">
+                <img src="https://earth.org/wp-content/uploads/2022/02/Untitled-design-2022-02-25T104917.080.jpg" alt="Arctic habitat and climate impact">
+              </div>
+
+              <div class="image-card" data-title="Wetlands" data-desc="Wetlands are being drained for development, reducing critical breeding grounds for many species. Pollution further harms the delicate balance of these ecosystems.">
+                <img src="https://www.wwt.org.uk/uploads/images/2020-03-12/common-crane-blog-717-403.jpg" alt="Wetland habitat and birdlife">
+              </div>
+
+              <div class="image-card" data-title="Mountains" data-desc="Mountain habitats are affected by climate change, which alters temperature and vegetation patterns. Species adapted to cold environments are forced to move higher, with limited space to survive.">
+                <img src="https://good-nature-blog-uploads.s3.amazonaws.com/uploads/2023/01/CEEBB3A9-2F28-46EE-8A06-1DCF9A8C793C.jpeg" alt="Mountain habitat and threatened species">
+              </div>
 
             <script>
                 document.addEventListener("DOMContentLoaded", () => {
                     const cards = document.querySelectorAll(".image-card");
+                    const modal = document.createElement("div");
+                    modal.classList.add("gallery-modal");
+                    modal.innerHTML = `
+                        <div class="gallery-modal-content">
+                            <button class="gallery-modal-close" aria-label="Close expanded image">&times;</button>
+                            <img class="gallery-modal-image" src="" alt="">
+                            <div class="gallery-modal-text">
+                                <h2></h2>
+                                <p></p>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(modal);
+
+                    const modalImage = modal.querySelector(".gallery-modal-image");
+                    const modalTitle = modal.querySelector(".gallery-modal-text h2");
+                    const modalDesc = modal.querySelector(".gallery-modal-text p");
+                    const closeBtn = modal.querySelector(".gallery-modal-close");
 
                     cards.forEach((card) => {
                         const overlay = document.createElement("div");
                         overlay.classList.add("overlay");
-                        overlay.textContent = card.getAttribute("data-desc") || "";
+                        const title = card.getAttribute("data-title") || "";
+                        const desc = card.getAttribute("data-desc") || "";
+                        overlay.innerHTML = `<div><h3>${title}</h3><p>${desc}</p></div>`;
 
                         card.appendChild(overlay);
 
                         card.addEventListener("mouseenter", () => {
-                            overlay.style.opacity = "1";
+                            if (!card.classList.contains("expanded")) {
+                                overlay.style.opacity = "1";
+                            }
                         });
 
                         card.addEventListener("mouseleave", () => {
                             overlay.style.opacity = "0";
                         });
+
+                        card.addEventListener("click", () => {
+                            modalImage.src = card.querySelector("img").src;
+                            modalImage.alt = card.querySelector("img").alt;
+                            modalTitle.textContent = title;
+                            modalDesc.textContent = desc;
+                            modal.classList.add("open");
+                        });
+                    });
+
+                    closeBtn.addEventListener("click", () => {
+                        modal.classList.remove("open");
+                    });
+
+                    modal.addEventListener("click", (event) => {
+                        if (event.target === modal) {
+                            modal.classList.remove("open");
+                        }
+                    });
+
+                    document.addEventListener("keydown", (event) => {
+                        if (event.key === "Escape") {
+                            modal.classList.remove("open");
+                        }
                     });
                 });
             </script>
