@@ -18,8 +18,8 @@
         <!-- Navigation Bar -->
         <nav>
             <a href="simulator.html">Action Impact Simulator</a> |
-            <a href="gallery.html" class="active">Gallery</a> |
-            <a href="profile.html">User Profile</a> |
+            <a href="gallery.html">Gallery</a> |
+            <a href="profile.html" class="active">User Profile</a> |
             <a href="feedback.html">Feedback</a> |
             <a href="team.html">Team Page</a> |
             <a href="sitemap.html">Sitemap</a>
@@ -107,59 +107,72 @@
         support: ""
     };
         
-    let completedSteps = 0;
+    let completedSteps = [false, false, false];
         
     function updateProgress() {
+        let completedCount = completedSteps.filter(step=>step)
         let percent = (completedSteps / 3) * 100;
         document.getElementById("progressBar").value = percent;
         document.getElementById("progressText").textContent =
-            "Step " + completedSteps + " of 3 completed";
+            "Profile completion: " + percent + "% ("+ completedCount + "of 3 steps)";
     }
         
     function startStep(step) {
         
         if (step === 1) {
-            let name = prompt("Enter your name (or leave blank to skip):");
-            let username = prompt("Choose a username:");
-            let role = prompt("Your role (e.g. student, volunteer):");
-        
-            if (name) {
-                profile.name = name;
-                document.getElementById("nameOutput").textContent = "Name: " + name;
+            let name = prompt("Enter your name (leave blank to skip):");
+            let username = prompt("Choose a username (leave blank to skip):");
+            let role = prompt("Your role (leave blank to skip):");
+
+            let filled = 0;
+
+        if (name !== null && name.trim() !== "") {
+            document.getElementById("nameOutput").textContent = "Name: " + name;
+            filled++;
             }
-            if (username) {
-                profile.username = username;
-                document.getElementById("usernameOutput").textContent = "Username: " + username;
+
+        if (username !== null && username.trim() !== "") {
+            document.getElementById("usernameOutput").textContent = "Username: " + username;
+            filled++;
             }
-            if (role) {
-                profile.role = role;
-                document.getElementById("roleOutput").textContent = "Role: " + role;
+
+        if (role !== null && role.trim() !== "") {
+            document.getElementById("roleOutput").textContent = "Role: " + role;
+            filled++;
             }
-        
+
+        if (filled > 0) {
             document.getElementById("basicSection").style.display = "block";
-            completedSteps = Math.max(completedSteps, 1);
-        }
+            stepsCompleted[0] = true;
+            }
+}
         
         if (step === 2) {
             let animal = prompt("Favourite endangered animal:");
             let habitat = prompt("Preferred habitat (forest, ocean, etc):");
             let threat = prompt("Biggest threat you care about:");
         
-            if (animal) {
-                profile.animal = animal;
-                document.getElementById("animalOutput").textContent = "Animal: " + animal;
+        if (animal) {
+            profile.animal = animal;
+            document.getElementById("animalOutput").textContent = "Animal: " + animal;
+            filled++;
             }
             if (habitat) {
                 profile.habitat = habitat;
                 document.getElementById("habitatOutput").textContent = "Habitat: " + habitat;
+                filled++;
             }
             if (threat) {
                 profile.threat = threat;
                 document.getElementById("threatOutput").textContent = "Concern: " + threat;
+                filled++;
             }
-        
-            document.getElementById("interestSection").style.display = "block";
-            completedSteps = Math.max(completedSteps, 2);
+            if (filled > 0) {
+                document.getElementById("interestSection").style.display = "block";
+                completedSteps[1] = true;  
+            } else {
+                completedSteps[1] = false;
+            }
         }
         
         if (step === 3) {
@@ -170,22 +183,29 @@
             if (action) {
                 profile.action = action;
                 document.getElementById("actionOutput").textContent = "Action: " + action;
+                filled++;
             }
             if (goal) {
                 profile.goal = goal;
                 document.getElementById("goalOutput").textContent = "Goal: " + goal;
+                filled++
             }
             if (support) {
                 profile.support = support;
                 document.getElementById("supportOutput").textContent = "Support: " + support;
+                filled++
             }
-        
-            document.getElementById("actionSection").style.display = "block";
-            completedSteps = Math.max(completedSteps, 3);
+            if (filled > 0) {
+                document.getElementById("actionSection").style.display = "block";
+                completedSteps[2] = true;
+            } else {
+                completedSteps[2] = false;
+            }
         }
         
         updateProgress();
     }
+
         </script>
 
 </body>
