@@ -1,7 +1,10 @@
 # HTML_groupProject
 
-editing check
 
-test test
+!! VERY IMPORTANT !!
+before you press commit run this command in your terminal:
 
-type
+git pull
+
+
+Team name: IDEAL
