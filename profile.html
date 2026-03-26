@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Endangered Animal Conservation</title>
+    <!-- Link to Global CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!--  HEADER  -->
+    <!-- DO NOT CHANGE: Logo and navigation structure -->
+    <header>
+        <!-- Logo -->
+        <img src="conservation_logo_white.png" alt="Endangered Animals Logo" width="100">
+        <h1>Endangered Animal Conservation</h1>
+
+        <!-- Navigation Bar -->
+        <nav>
+            <a href="simulator.html">Action Impact Simulator</a> |
+            <a href="gallery.html" class="active">Gallery</a> |
+            <a href="profile.html">User Profile</a> |
+            <a href="feedback.html">Feedback</a> |
+            <a href="team.html">Team Page</a> |
+            <a href="sitemap.html">Sitemap</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <!-- MAIN CONTENT  -->
+    <!-- Each team member adds content here -->
+    <main>
+        <h2>Build Your Profile</h2>
+        <p>Click the button below to start creating your conservation profile.</p>
+
+        <!-- Progress -->
+        <div class="card">
+            <h3>Progress</h3>
+            <p id="progressText">Step 0 of 3 completed</p>
+            <progress id="progressBar" value="0" max="100"></progress>
+        </div>
+
+        <!-- Buttons -->
+        <div class="card">
+            <button onclick="startStep(1)">Step 1: Basic Info</button>
+            <button onclick="startStep(2)">Step 2: Interests</button>
+            <button onclick="startStep(3)">Step 3: Actions</button>
+        </div>
+
+        <!-- Profile Output -->
+        <div class="card">
+            <h3>Your Profile</h3>
+
+            <div id="basicSection" style="display:none;">
+                <h4>Basic Info</h4>
+                <p id="nameOutput"></p>
+                <p id="usernameOutput"></p>
+                <p id="roleOutput"></p>
+            </div>
+
+            <div id="interestSection" style="display:none;">
+                <h4>Interests</h4>
+                <p id="animalOutput"></p>
+                <p id="habitatOutput"></p>
+                <p id="threatOutput"></p>
+            </div>
+
+            <div id="actionSection" style="display:none;">
+                <h4>Actions</h4>
+                <p id="actionOutput"></p>
+                <p id="goalOutput"></p>
+                <p id="supportOutput"></p>
+            </div>
+        </div>
+
+
+    </main>
+
+    <hr>
+
+    <!--  FOOTER  -->
+    <!-- DO NOT CHANGE: Footer structure -->
+    <footer>
+        <p>
+             <!-- change these links to your own -->
+            <a href="your-page-editor-link.html">Page Editor</a> |
+            <a href="your-validation-link.html">Validation</a> |
+            <a href="your-accessibility-link.html">Accessibility & Compliance</a>
+        </p>
+        <!-- change these to your own -->
+        <p>Student Name: Dorcas Kajendran</p>
+        <p>Student ID: w2177362</p>
+        <p>Student Email: w2177362@westminster.ac.uk</p>
+    </footer>
+
+    <script>
+    let profile = {
+        name: "",
+        username: "",
+        role: "",
+        animal: "",
+        habitat: "",
+        threat: "",
+        action: "",
+        goal: "",
+        support: ""
+    };
+        
+    let completedSteps = 0;
+        
+    function updateProgress() {
+        let percent = (completedSteps / 3) * 100;
+        document.getElementById("progressBar").value = percent;
+        document.getElementById("progressText").textContent =
+            "Step " + completedSteps + " of 3 completed";
+    }
+        
+    function startStep(step) {
+        
+        if (step === 1) {
+            let name = prompt("Enter your name (or leave blank to skip):");
+            let username = prompt("Choose a username:");
+            let role = prompt("Your role (e.g. student, volunteer):");
+        
+            if (name) {
+                profile.name = name;
+                document.getElementById("nameOutput").textContent = "Name: " + name;
+            }
+            if (username) {
+                profile.username = username;
+                document.getElementById("usernameOutput").textContent = "Username: " + username;
+            }
+            if (role) {
+                profile.role = role;
+                document.getElementById("roleOutput").textContent = "Role: " + role;
+            }
+        
+            document.getElementById("basicSection").style.display = "block";
+            completedSteps = Math.max(completedSteps, 1);
+        }
+        
+        if (step === 2) {
+            let animal = prompt("Favourite endangered animal:");
+            let habitat = prompt("Preferred habitat (forest, ocean, etc):");
+            let threat = prompt("Biggest threat you care about:");
+        
+            if (animal) {
+                profile.animal = animal;
+                document.getElementById("animalOutput").textContent = "Animal: " + animal;
+            }
+            if (habitat) {
+                profile.habitat = habitat;
+                document.getElementById("habitatOutput").textContent = "Habitat: " + habitat;
+            }
+            if (threat) {
+                profile.threat = threat;
+                document.getElementById("threatOutput").textContent = "Concern: " + threat;
+            }
+        
+            document.getElementById("interestSection").style.display = "block";
+            completedSteps = Math.max(completedSteps, 2);
+        }
+        
+        if (step === 3) {
+            let action = prompt("What action will you take to help?");
+            let goal = prompt("Your conservation goal:");
+            let support = prompt("Would you donate or volunteer?");
+        
+            if (action) {
+                profile.action = action;
+                document.getElementById("actionOutput").textContent = "Action: " + action;
+            }
+            if (goal) {
+                profile.goal = goal;
+                document.getElementById("goalOutput").textContent = "Goal: " + goal;
+            }
+            if (support) {
+                profile.support = support;
+                document.getElementById("supportOutput").textContent = "Support: " + support;
+            }
+        
+            document.getElementById("actionSection").style.display = "block";
+            completedSteps = Math.max(completedSteps, 3);
+        }
+        
+        updateProgress();
+    }
+        </script>
+
+</body>
+</html>
