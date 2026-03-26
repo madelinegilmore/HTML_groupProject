@@ -1,0 +1,141 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Endangered Animal Conservation</title>
+    <!-- Link to Global CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .scroll-container {
+            overflow-x: auto;
+            white-space: nowrap; /* Prevents images from wrapping to the next line */
+            padding: 10px;
+        }
+
+        .image-card {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+
+        .image-card img {
+            width: 800px;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Overlay (hidden by default) */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(106, 160, 159, 0.9);
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            opacity: 0;
+            transition: opacity 0.3s;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!--  HEADER  -->
+    <!-- DO NOT CHANGE: Logo and navigation structure -->
+    <header>
+        <!-- Logo -->
+        <img src="conservation_logo_white.png" alt="Endangered Animals Logo" width="100">
+        <h1>Endangered Animal Conservation</h1>
+
+        <!-- Navigation Bar -- change the active class to the page you are on-->
+
+        <nav>
+            <a href="home.html">Home</a> |
+            <a href="simulator.html">Action Impact Simulator</a> |
+            <a href="gallery.html" class="active">Gallery</a> |
+            <a href="profile.html">User Profile</a> |
+            <a href="feedback.html">Feedback</a> |
+            <a href="team.html">Team Page</a> |
+            <a href="sitemap.html">Sitemap</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <!-- MAIN CONTENT  -->
+    <!-- Each team member adds content here -->
+    <main>
+        <div class="scroll-container">
+
+            <div class="image-card" data-desc="Beautiful coastal village in Italy">
+              <img src="https://media.cntraveller.com/photos/611befdcdb797d0116fd4d86/16:9/w_3200,h_1800,c_limit/end.jpg" alt="Cinque Terre">
+            </div>
+          
+            <div class="image-card" data-desc="Lush green forest ecosystem">
+              <img src="https://www.green.earth/hubfs/Why%20should%20endangered%20species%20be%20protected%20_featured.png" alt="Forest">
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const cards = document.querySelectorAll(".image-card");
+
+                    cards.forEach((card) => {
+                        const overlay = document.createElement("div");
+                        overlay.classList.add("overlay");
+                        overlay.textContent = card.getAttribute("data-desc") || "";
+
+                        card.appendChild(overlay);
+
+                        card.addEventListener("mouseenter", () => {
+                            overlay.style.opacity = "1";
+                        });
+
+                        card.addEventListener("mouseleave", () => {
+                            overlay.style.opacity = "0";
+                        });
+                    });
+                });
+            </script>
+          
+            <!-- <div class="image-card" data-desc="Aurora Borealis in the night sky">
+              <img src="img_lights.jpg" alt="Northern Lights">
+            </div>
+          
+            <div class="image-card" data-desc="Snowy mountain range">
+              <img src="img_mountains.jpg" alt="Mountains">
+            </div> -->
+          
+          </div>
+          
+          <script src="script.js"></script>
+    </main>
+
+    <hr>
+
+    <!--  FOOTER  -->
+    <!-- DO NOT CHANGE: Footer structure -->
+    <footer>
+        <p>
+             <!-- change these links to your own -->
+            <a href="your-page-editor-link.html">Page Editor</a> |
+            <a href="your-validation-link.html">Validation</a> |
+            <a href="your-accessibility-link.html">Accessibility & Compliance</a>
+        </p>
+        <!-- change these to your own -->
+        <p>Student Name: Madeline</p>
+        <p>Student ID: w2189826</p>
+        <p>Student Email: w2189826@westminster.ac.uk</p>
+    </footer>
+
+</body>
+</html>
