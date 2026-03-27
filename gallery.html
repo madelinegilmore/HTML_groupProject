@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,12 +8,44 @@
 
     <style>
         body {
-            background-color: rgb(245, 245, 240);
+            background-color: rgb(102, 150, 105);
+        }
+
+        body.light-mode,
+        body.dark-mode {
+            color: rgb(60, 60, 55);
         }
         .scroll-container {
             overflow-x: auto;
             white-space: nowrap; /* Prevents images from wrapping to the next line */
             padding: 10px;
+        }
+
+        .mode-switcher {
+            margin: 16px 10px 0;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .mode-switcher button {
+            padding: 8px 14px;
+            border-radius: 6px;
+            border: 1px solid rgb(102, 150, 105);
+            cursor: pointer;
+            background: rgb(245, 245, 240);
+            color: rgb(60, 60, 55);
+        }
+
+        body.dark-mode .mode-switcher button {
+            background: rgb(55, 60, 55);
+            color: rgb(240, 238, 232);
+            border-color: rgb(121, 184, 183);
+        }
+
+        .mode-switcher button.active {
+            font-weight: bold;
+            text-decoration: underline;
         }
 
         .image-card {
@@ -65,6 +97,16 @@
             line-height: 1.4;
         }
 
+        body.light-mode .overlay {
+            background-color: rgba(245, 245, 240, 0.94);
+            color: rgb(60, 60, 55);
+        }
+
+        body.dark-mode .overlay {
+            background-color: rgba(33, 36, 36, 0.9);
+            color: white;
+        }
+
         .gallery-modal {
             position: fixed;
             inset: 0;
@@ -90,6 +132,15 @@
             overflow: hidden;
             display: flex;
             position: relative;
+        }
+
+        body.dark-mode .gallery-modal-content {
+            background: rgb(33, 36, 36);
+            color: rgb(240, 238, 232);
+        }
+
+        body.dark-mode .gallery-modal-close {
+            background: rgba(255, 255, 255, 0.18);
         }
 
         .gallery-modal-image {
@@ -142,7 +193,7 @@
         }
     </style>
 </head>
-<body>
+<body class="light-mode">
 
     <!--  HEADER  -->
     <!-- DO NOT CHANGE: Logo and navigation structure -->
@@ -151,7 +202,7 @@
         <img src="conservation_logo_white.png" alt="Endangered Animals Logo" width="100">
         <h1>Endangered Animal Conservation</h1>
 
-        <!-- Navigation Bar -- change the active class to the page you are on-->
+        <!-- Navigation Bar - change the active class to the page you are on-->
 
         <nav>
             <a href="home.html">Home</a> |
@@ -196,7 +247,10 @@
 
             <script>
                 document.addEventListener("DOMContentLoaded", () => {
+                    const body = document.body;
                     const cards = document.querySelectorAll(".image-card");
+                    const lightModeBtn = document.getElementById("lightModeBtn");
+                    const darkModeBtn = document.getElementById("darkModeBtn");
                     const modal = document.createElement("div");
                     modal.classList.add("gallery-modal");
                     modal.innerHTML = `
@@ -215,6 +269,18 @@
                     const modalTitle = modal.querySelector(".gallery-modal-text h2");
                     const modalDesc = modal.querySelector(".gallery-modal-text p");
                     const closeBtn = modal.querySelector(".gallery-modal-close");
+
+                    const setMode = (mode) => {
+                        body.classList.remove("light-mode", "dark-mode");
+                        body.classList.add(mode);
+
+                        const isLight = mode === "light-mode";
+                        lightModeBtn.classList.toggle("active", isLight);
+                        darkModeBtn.classList.toggle("active", !isLight);
+                    };
+
+                    lightModeBtn.addEventListener("click", () => setMode("light-mode"));
+                    darkModeBtn.addEventListener("click", () => setMode("dark-mode"));
 
                     cards.forEach((card) => {
                         const overlay = document.createElement("div");
@@ -263,6 +329,12 @@
             </script>
           
           </div>
+
+          <div class="mode-switcher" role="group" aria-label="Card content mode switch">
+            <span>Card style:</span>
+            <button id="lightModeBtn" class="active" type="button">Light</button>
+            <button id="darkModeBtn" type="button">Dark</button>
+          </div>
           
           <script src="script.js"></script>
     </main>
@@ -274,9 +346,8 @@
     <footer>
         <p>
              <!-- change these links to your own -->
-            <a href="your-page-editor-link.html">Page Editor</a> |
-            <a href="your-validation-link.html">Validation</a> |
-            <a href="your-accessibility-link.html">Accessibility & Compliance</a>
+            <a href="PageEditor+Validator/pageEditor_ST1.html">Page Editor</a> |
+            <a href="PageEditor+Validator/validation_ST1.html">Validation</a> |
         </p>
         <!-- change these to your own -->
         <p>Student Name: Madeline</p>

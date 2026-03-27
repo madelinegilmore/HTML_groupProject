@@ -33,7 +33,7 @@
         <h3>Progress</h3>
         <p id="progressText">Step 0 of 3 completed</p>
         <progress id="progressBar" value="0" max="100"></progress>
-        <!-- ✅ FIXED: moved OUT of script -->
+        
         <p id="completeMessage"></p>
     </div>
 
@@ -72,16 +72,20 @@
 
 <hr>
 
-<footer>
-    <p>
-        <a href="your-page-editor-link.html">Page Editor</a> |
-        <a href="your-validation-link.html">Validation</a> |
-        <a href="your-accessibility-link.html">Accessibility & Compliance</a>
-    </p>
-    <p>Student Name: Dorcas Kajendran</p>
-    <p>Student ID: w2177362</p>
-    <p>Student Email: w2177362@westminster.ac.uk</p>
-</footer>
+    <!--  FOOTER  -->
+    <!-- DO NOT CHANGE: Footer structure -->
+    <footer>
+        <p>
+             <!-- change these links to your own -->
+            <a href="your-page-editor-link.html">Page Editor</a> |
+            <a href="your-validation-link.html">Validation</a> |
+            <a href="your-accessibility-link.html">Accessibility & Compliance</a>
+        </p>
+        <!-- change these to your own -->
+        <p>Student Name: Dorcas Kajendran</p>
+        <p>Student ID: w2177362</p>
+        <p>Student Email: w2177362@westminster.ac.uk</p>
+    </footer>
 
 <script>
 let profile = {
@@ -106,7 +110,7 @@ function updateProgress() {
     document.getElementById("progressText").textContent =
         "Profile completion: " + percent + "% (" + completedCount + " of 3 steps)";
 
-    // ✅ FIXED: completion message in correct place
+    
     if (percent === 100) {
         document.getElementById("completeMessage").textContent =
             "🎉 Profile complete! Great job supporting conservation!";
