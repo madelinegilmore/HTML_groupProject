@@ -1,15 +1,107 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Editor Student - provide your student name</title>
+    <title>Page Editor Student - Dorcas Kajendran</title>
 
     <link rel="stylesheet" href="css/pageEditor_validator.css"> <!-- External CSS link -->
 
 </head>
 <body>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #f4f6f8;
+            font-family: Arial, sans-serif;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* CARD DESIGN */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* CARD HEADER (LOGO + TITLE) */
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }       
+
+        .card-header img {
+            width: 40px;
+            height: 40px;
+        }
+
+        header {
+            margin: 0;
+            padding: 10px 20px;
+            background: #1f6f5b;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        header img {
+            width: 45px;
+            height: auto;
+        }
+
+        header h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        /* LINKS */
+        .links {
+            margin-top: 15px;
+        }
+
+        .links a {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 8px 12px;
+            background: #1f6f5b;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .links a:hover {
+            background: #144a3d;
+        }
+
+        /* SIDEBAR */
+        aside {
+            position: sticky;
+            top: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+    </style>
     
     <!-- Update the header and the footer to be consistent with the rest of the pages you implemented -->
 
@@ -19,231 +111,284 @@
     </header>
 
     <section class="stud">
-        <h2>Dorcas Kajendran, Ideal, User Profile, Sitemap, Content Page</h2>
+        <h2>Dorcas Kajendran</h2>
+        <p><strong>Team Name:</strong>Ideal</p>
+        <p><strong>Role:</strong> User Profile, Sitemap, Content</p>
     </section>
 
     <div class="container">
         <!-- Main content area -->
         <main>
+            <section class="card" id="content-page">
+                <h2>Contents</h2>
+                <ul>
+                    <li><a href="#profile">User Profile</a></li>
+                    <li><a href="#sitemap">Sitemap</a></li>
+                    <li><a href="#content-page">Content Page</a></li>
+                    <li><a href="#challenge">Challenges and Lessons Learned</a></li>
+                    <li><a href="#accessibility">Accessibility</a></li>
+                    <li><a href="#compliance">Compliance</a></li>
+                    <li><a href="#group">Group Meeting Logs</a></li>
+                    <li><a href="#ref">References</a></li>
+                </ul>
+            </section>
 
             <!-- Update those first three sections for the pages you were responsible to implement -->
 
-            <section>
-                <h2 id="profile">User Profile Page</h2>
+            <section class="card" id="profile">
+                <div class="card-header">
+                    <img src="conservation_logo_white.png" alt="logo">
+                    <h2>User Profile Page</h2>
+                </div>
 
-                <h3>Technical Description</h3>
+                <h3>HTML Structure</h3>
                 <p>
-                    The User Profile page was built using the shared template with a structured layout
-                    including header, main, and footer. The main section contains different profile areas
-                    grouped using div elements for basic details, interests and actions.
+                    The User Profile page was built using semantic HTML elements such as <code>&lt;header&gt;</code>,
+                    <code>&lt;main&gt;</code>, and <code>&lt;section&gt;</code> to ensure a clear and accessible structure.
+                    The layout follows a modular design where each profile component is separated into logical blocks.
                 </p>
-                    
-                <h3>Accessibility</h3>
+            
+                <h3>CSS Techniques</h3>
                 <p>
-                    Clear text labels and headings were used to improve readability. The layout is simple
-                    and structured, making it easier to follow. Instructions are displayed clearly before
-                    starting the profile process.
+                    Flexbox was used to align profile components and ensure responsive layout behaviour across different screen sizes.
+                    Hover effects and spacing were applied to improve usability and visual feedback.
                 </p>
-                    
-                <h3>Link to the validation page</h3> 
-                <p><a href="validation.html#profileVal">View validation</a></p>
-
-                <h3>Link to the page</h3>
+            
+                <h3>JavaScript Implementation</h3>
+                <p>
+                    JavaScript was used to create an interactive multi-step profile system. User input was collected using
+                    <code>prompt()</code> and stored in variables. DOM manipulation was used to dynamically update the page
+                    without requiring reloads.
+                </p>
+                <p>
+                    Conditional logic allowed users to skip optional questions, while a progress tracker was implemented
+                    to show completion status.
+                </p>
+            
+                <h3>Design Rationale</h3>
+                <p>
+                    A step-by-step interaction model was chosen to improve usability and reduce cognitive load for users.
+                    The decision to avoid traditional forms was intentional to demonstrate dynamic JavaScript control.
+                </p>
+            
+                <p><a href="validation.html#profileVal" target="_blank">View Validation</a></p>
                 <p><a href="profile.html" target="_blank">Open User Profile Page</a></p>
             </section>
 
-            <section>
-                <h2 id="sitemap">Sitemap Page</h2>
+            <section class="card" id="sitemap">
+                <div class="card-header">
+                    <img src="conservation_logo_white.png" alt="logo">
+                    <h2 id="sitemap">Sitemap</h2>
+                </div>
+                
 
-                <h3>Technical Description</h3>
+                <h3>HTML Structure</h3>
                 <p>
-                    The sitemap was created using SVG elements such as rect, line and text to visually
-                    represent the website structure. Each page is displayed as a node connected by lines
-                    to show hierarchy.
+                    The sitemap was implemented using SVG elements such as <code>&lt;rect&gt;</code>, <code>&lt;line&gt;</code>,
+                    and <code>&lt;text&gt;</code> to visually represent the website structure and hierarchy.
                 </p>
+            
+                <h3>CSS Techniques</h3>
                 <p>
-                    Interactive features were added by wrapping nodes in anchor tags, allowing users to
-                    click and navigate. CSS hover effects and focus styles were used to improve usability. 
+                    CSS was used to enhance interactivity through hover states, transitions, and focus styling for keyboard navigation.
+                    SVG elements were styled using stroke and fill properties for clarity.
                 </p>
-
-                <h3>Accessibility</h3>
+            
+                <h3>Design Rationale</h3>
                 <p>
-                    Each node includes text labels and title elements for screen readers. Keyboard navigation
-                    is supported using tabindex, and focus styles are clearly visible.
+                    An SVG-based approach was chosen because it allows scalable, resolution-independent diagrams, which is ideal
+                    for representing structured navigation systems.
                 </p>
-
-                <h3>Link to the validation page</h3> <!-- Update the path to link the Page Editor with the splash page -->
-                <p><a href="validation.html#sitemapVal">View validation</a></p>
-   
-                <h3>Link to the page</h3>
+            
+                <p><a href="validation.html#sitemapVal" target="_blank">View Validation</a></p>
                 <p><a href="sitemap.html" target="_blank">Open Sitemap Page</a></p>
             </section>
+            
 
-            <section>
-                <h2 id="content">Content Page</h2>
-                <h3>Technical Description</h3>
+            <section class="card" id="content">
+                <div class="card-header">
+                    <img src="conservation_logo_white.png" alt="logo">
+                    <h2 id="content">Content Page</h2>
+                </div>
+                
+
+                <h3>HTML Structure</h3>
                 <p>
-                    The content page was structured using semantic HTML elements including section and headings
-                    to divide content into clear parts. Internal navigation links were added at the top of the page
-                    using anchor links to allow users to jump between sections.
+                    The Content Page uses semantic structure with multiple <code>&lt;section&gt;</code> elements and internal anchor links.
+                    This improves navigation and allows users to jump between content sections efficiently.
                 </p>
+            
+                <h3>CSS Techniques</h3>
                 <p>
-                    CSS was used to style images, spacing and layout. A fixed "Go to Top" button was implemented
-                    using position: fixed to ensure it stays visible while scrolling.
-                </p> 
-
-                <h3>Accessibility</h3>
-                <p>
-                    All images include alt text and headings are used in a logical order to improve readability.
-                    Internal navigation helps users quickly move through long content.
+                    CSS was used for layout spacing, typography control, and image styling.
+                    A fixed-position "Back to Top" button was implemented to improve long-page navigation.
                 </p>
-
-                <h3>Link to the validation page</h3> 
-                <p><a href="validation.html#contentVal">View validation</a></p>
-
-                        
-                <h3>Link to the page</h3>
+            
+                <h3>Design Rationale</h3>
+                <p>
+                    The internal navigation system was introduced to improve user experience when reading long-form content.
+                    Semantic HTML ensures screen readers can interpret the page structure correctly.
+                </p>
+            
+                <p><a href="validation.html#contentVal" target="_blank">View Validation</a></p>
                 <p><a href="content.html" target="_blank">Open Content Page</a></p>
-            </section>
+            </section>                
 
-            <section>
-                <h2 id="challenge"> Challenges and Lessons Learned</h2>
-                    <p> 
-                        One challenge was implementing JavaScript prompts while still making the page feel interactive.
-                        It was also difficult to manage updating the profile dynamically without reloading the page.
-                    </p>
-                    <p>
-                        For the sitemap, positioning SVG elements correctly took time as small changes in values affected
-                        the layout. I solved this by testing different coordinates and adjusting step by step.
-                    </p>
-                    <p>
-                        Overall, I improved my understanding of DOM manipulation, SVG usage and page structure.
-                    </p>
-            </section>
-
-            <section>
-                <h2 id="compliance"> Compliance</h2>
+            <section class="card" id="challenge">
+                <div class="card-header">
+                    <img src="conservation_logo_white.png" alt="logo">
+                    <h2 id="challenge"> Challenges and Lessons Learned</h2>
+                </div>
+                
                 <p>
-                    All content included on the website is appropriate and relevant to the topic of endangered animals.
-                    No offensive or harmful material is used.
+                    One major challenge was implementing dynamic JavaScript interactions using prompt-based input while maintaining
+                    a smooth user experience. Managing state across multiple steps required careful structuring of variables and functions.
                 </p>
                 <p>
-                    Images are used responsibly and are related to the content. The work produced is original and follows
-                    academic integrity guidelines.
+                    Another difficulty was designing the SVG sitemap layout, as minor coordinate changes significantly affected positioning.
+                    This was resolved through iterative testing and adjustment.
                 </p>
                 <p>
-                    External resources were referenced where necessary, and no copyrighted material was misused.
-                </p>    
+                    Overall, this project improved my understanding of DOM manipulation, SVG graphics, and modular web design principles.
+                </p>
             </section>
 
-            <section>
-                <h2 id="group"> Group Meetings and Individual Contribution Log</h2>
-                    <p>Include a Group Meetings and Contribution Log that documents your engagement with group work.</p> 
-                    Requirements:
-                        <ul> 
-                            <li>A minimum of six (6) group meetings must be recorded.</li>
-                            <li>Each student must provide their own account of the meetings.</li>
-                            <li>The log must focus on individual contribution, not just group activity.</li>
-                        </ul>
-                        <p>Feel free to follow the example table structure below:</p>
-
-                        <table >
-    
-                            <thead>
-                                <tr>
-                                    <th colspan="6">Group Meetings and Contribution Log</th>
-                                </tr>
-                                <tr>
-                                    <th>Meeting</th>
-                                    <th>Date &amp; Time</th>
-                                    <th>Format</th>
-                                    <th>Objective</th>
-                                    <th>Attended</th>
-                                    <th>Your Individual Contribution</th>
-                                </tr>
-                            </thead>
-                        
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>23 Mar 2026</td>
-                                    <td>Online</td>
-                                    <td>Starting off with base of the coursework and decide on a file sharing system.</td>
-                                    <td>Yes</td>
-                                    <td>Created the logbook tables</td>
-                        
-                                <tr>
-                                    <td>2</td>
-                                    <td>24 Mar 2026</td>
-                                    <td>Online</td>
-                                    <td>Change to Github code base</td>
-                                    <td>Yes</td>
-                                    <td>Focused on my theme for the content page.</td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>3</td>
-                                    <td>03 Mar 2026</td>
-                                    <td>Hybrid</td>
-                                    <td>Progress review</td>
-                                    <td>No</td>
-                                    <td>I reviewed meeting notes and followed up with tasks.</td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>4</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>5</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>6</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                        
-                            </tbody>
-                        
-                        </table>
-                    
+            <section class="card" id="accessibility">
+                <div class="card-header">
+                    <img src="conservation_logo_white.png" alt="logo">
+                    <h2 id="accessibility">Accessibility Considerations</h2>
+                </div>
+                
+                <p>
+                    Accessibility was considered throughout development by using semantic HTML elements, meaningful headings,
+                    and alternative text for images.
+                </p>
+                <p>
+                    Keyboard navigation was supported through focusable SVG elements and visible focus indicators.
+                    Colour contrast and spacing were designed to improve readability for users with visual impairments.
+                </p>
             </section>
 
-            <section>
-                <h2 id="ref">References</h2>
-                <p>Provide links to resources you used following a consistent format (e.g., APA, MLA, or a simplified style). For example:<br><br>
-                    <ul class="ref">
-                        <li>iStock (2025) <i>iStock.</i> Available at: <a href="#">https://www.istockphoto.com/</a> (Last accessed: 11 Feb 2025).</li>
-                        <li>Duckett, J., 2011. HTML and CSS: Design and Build Websites,<i>John Willey&Sons. Inc. Indianappolis.</i></li>
-                    </ul>
+            <section class="card" id="compliance">
+                <div class="card-header">
+                    <img src="conservation_logo_white.png" alt="logo">
+                    <h2 id="compliance">JANET Compliance</h2>
+                </div>
+               
+                <p>
+                    All pages comply with JANET regulations by ensuring that content is appropriate, ethical, and academically valid.
+                    No offensive, illegal, or inappropriate material is included.
+                </p>
+                <p>
+                    External sources were used responsibly and referenced where applicable. The project follows academic integrity
+                    guidelines by ensuring originality of code and proper attribution of learning resources.
+                </p>
             </section>
 
-            <p class="top"><a href="#top">Go top</a></p>
-        </main>
+            <section class="card" id="group">
+                <div class="card-header">
+                    <img src="conservation_logo_white.png" alt="logo">
+                    <h2 id="group">Group Meetings and Contribution Log</h2>
+                
+            
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Meeting</th>
+                            <th>Date</th>
+                            <th>Format</th>
+                            <th>Objective</th>
+                            <th>Attended</th>
+                            <th>My Contribution</th>
+                        </tr>
+                    </thead>
+            
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>23 Mar 2026, 18:30</td>
+                            <td>Online</td>
+                            <td>Project setup and role allocation</td>
+                            <td>Yes</td>
+                            <td>Structured contribution log table and ensured consistency with group format requirements.</td>
+                        </tr>
+            
+                        <tr>
+                            <td>2</td>
+                            <td>24 Mar 2026, 19:00</td>
+                            <td>Online</td>
+                            <td>Change to Github code base</td>
+                            <td>Yes</td>
+                            <td>Developed sitemap structure planning</td>
+                        </tr>
+            
+                        <tr>
+                            <td>3</td>
+                            <td>26 Mar 2026, 19:00</td>
+                            <td>Face-to-face</td>
+                            <td>Update code base and link pages together</td>
+                            <td>Yes</td>
+                            <td>Updated tasks and reviewed our work</td>
+                        </tr>
+            
+                        <tr>
+                            <td>4</td>
+                            <td>26 Mar 2026</td>
+                            <td>Online</td>
+                            <td>Page integration testing</td>
+                            <td>Yes</td>
+                            <td>Improved profile page logic and structure</td>
+                        </tr>
+            
+                        <tr>
+                            <td>5</td>
+                            <td>26 Mar 2026</td>
+                            <td>Online</td>
+                            <td>Validation checks</td>
+                            <td>Yes</td>
+                            <td>Linked validation sections correctly</td>
+                        </tr>
+            
+                        <tr>
+                            <td>6</td>
+                            <td>27 Mar 2026</td>
+                            <td>Online</td>
+                            <td>Final review</td>
+                            <td>Yes</td>
+                            <td>Final edits and formatting improvements</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="card" id="ref">
+                <div class="card-header">
+                    <img src="conservation_logo_white.png" alt="logo">
+                    <h2 id="ref">References</h2>
+               
+            
+                <ul>
+                    <li>MDN Web Docs (2025) HTML Semantic Elements. https://developer.mozilla.org</li>
+                    <li>MDN Web Docs (2025) CSS Flexbox Guide. https://developer.mozilla.org</li>
+                    <li>W3Schools (2025) JavaScript DOM Manipulation. https://www.w3schools.com</li>
+                    <li>Duckett, J. (2011) HTML & CSS: Design and Build Websites. Wiley.</li>
+                </ul>
+            </section>
+            
+            <p class="top"><a href="#top">Back to Top</a></p>
+            
+            </main>
 
         <!-- Sidebar area -->
         <aside>
             <h3>Core pages developed:</h3>
 
         <!-- Customize this to the role you undertook. Keep only the list items you were responsible to develop, delete the rest -->
-            <ul class="top-level-ul">
+            
                 <!-- Keep only the list items you were responsible to develop, delete the rest and update the links to the corresponding markers -->
-                <li>Student 4</li>
+                
                 <ul>
+                    <li>Student 4</li>
                     <li><a href="#profile">User Profile</a></li>
                     <li><a href="#sitemap">Sitemap</a></li>
                     <li><a href="#content">Content</a></li>
@@ -252,7 +397,7 @@
     </div>
 
     <footer>
-        <p>Replace this footer with your teams' website footer</p>
+        <p>Endangered Animal Conservation</p>
     </footer>
 </body>
 </html>
